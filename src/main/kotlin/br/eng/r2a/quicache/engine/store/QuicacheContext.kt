@@ -9,22 +9,27 @@ import kotlin.concurrent.timerTask
  *
  * @author Ari
  */
-internal object QuicacheContext: Coroutine {
-    val currentContext = mutableListOf<QuicacheObject>()
+internal object QuicacheContext {
+    private val currentContext = mutableListOf<QuicacheObject>()
 
     fun addToContext(quicacheObject: QuicacheObject) {
         this.currentContext.add(quicacheObject)
     }
 
+    @ExperimentalMultiplatform
+    fun unsafeResetContext() {
+        this.currentContext.removeIf { true }
+    }
+
     fun scheduleWithTTL(quicacheObject: QuicacheObject) {
-        if(quicacheObject.ttl != null) return;
+        if(quicacheObject.ttl > 0) return;
         val condition = Predicate { current: QuicacheObject -> current.key == quicacheObject.key }
         Timer(quicacheObject.key, true).
             schedule(
                 timerTask {
                     currentContext.removeIf(condition)
                 },
-                quicacheObject.ttl!! as Long
+                quicacheObject.ttl
             )
     }
 }
