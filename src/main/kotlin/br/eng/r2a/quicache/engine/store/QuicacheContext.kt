@@ -1,28 +1,30 @@
 package br.eng.r2a.quicache.engine.store
 
-import br.eng.r2a.quicache.engine.exception.InvalidQuicacheValueException
+import java.util.*
+import java.util.function.Predicate
+import kotlin.concurrent.timerTask
 
 /**
  * Quicache general context
+ *
+ * @author Ari
  */
-internal object QuicacheContext {
+internal object QuicacheContext: Coroutine {
     val currentContext = mutableListOf<QuicacheObject>()
 
-    fun addOnContext(key: String, value: ByteArray) {
-        this.currentContext(createQuicacheObject(key, value))
+    fun addToContext(quicacheObject: QuicacheObject) {
+        this.currentContext.add(quicacheObject)
     }
 
-    fun createQuicacheObject(key: String, value: ByteArray): QuicacheObject {
-        if(value.size == 0) {
-            throw InvalidQuicacheValueException("Not a valid value for key $key on default schema")
-        }
-        return QuicacheObject(key, value)
-    }
-
-    fun createQuicacheObjectOnSchema(key: String, value: ByteArray, schema: String): QuicacheObject {
-        if(value.size == 0) {
-            throw InvalidQuicacheValueException("Not a valid value for key $key on $schema schema")
-        }
-        return QuicacheObject(key, value, schema)
+    fun scheduleWithTTL(quicacheObject: QuicacheObject) {
+        if(quicacheObject.ttl != null) return;
+        val condition = Predicate { current: QuicacheObject -> current.key == quicacheObject.key }
+        Timer(quicacheObject.key, true).
+            schedule(
+                timerTask {
+                    currentContext.removeIf(condition)
+                },
+                quicacheObject.ttl!! as Long
+            )
     }
 }
