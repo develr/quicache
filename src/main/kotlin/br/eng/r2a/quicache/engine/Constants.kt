@@ -1,6 +1,6 @@
 package br.eng.r2a.quicache.engine
 
 object Constants {
-    val defaultNamespace    = "default"
-    val defaultPort         = 7891
+    const val defaultNamespace    = "default"
+    const val defaultPort         = 7891
 }
