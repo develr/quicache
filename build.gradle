@@ -2,8 +2,21 @@ plugins {
     id 'org.jetbrains.kotlin.jvm' version '1.4.10'
 }
 
+apply plugin: 'java'
+apply plugin: 'application'
+
 group 'br.eng.r2a.quicache'
 version '1.0-SNAPSHOT'
+mainClassName = 'br.eng.r2a.quicache.engine.QuicacheRunner'
+
+
+jar {
+    manifest {
+        attributes(
+                'Main-Class': mainClassName
+        )
+    }
+}
 
 repositories {
     mavenCentral()
@@ -12,3 +25,4 @@ repositories {
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib"
 }
+
