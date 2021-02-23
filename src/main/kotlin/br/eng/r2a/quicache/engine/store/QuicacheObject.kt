@@ -3,7 +3,7 @@ package br.eng.r2a.quicache.engine.store
 data class QuicacheObject(
     val key: String,
     val value: ByteArray,
-    val schema: String = "default",
+    val schema: String? = "default",
     val ttl: Long // Time in ms
 ) {
     override fun equals(other: Any?): Boolean {

@@ -16,11 +16,10 @@ internal object QuicacheContext {
         this.currentContext.add(quicacheObject)
     }
 
-    fun getFromContext(key: String, context: String): QuicacheObject? {
+    fun getFromContext(key: String, context: String?): QuicacheObject? {
         return this.currentContext.firstOrNull { current -> current.key == key && current.schema == context }
     }
 
-    @ExperimentalMultiplatform
     fun unsafeResetContext() {
         this.currentContext.removeIf { true }
     }

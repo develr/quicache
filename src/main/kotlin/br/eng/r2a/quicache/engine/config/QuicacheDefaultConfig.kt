@@ -1,6 +1,6 @@
-package br.eng.r2a.quicache.engine
+package br.eng.r2a.quicache.engine.config
 
-object Constants {
+object QuicacheDefaultConfig {
     const val defaultNamespace    = "default"
     const val defaultPort         = 7891
 }
