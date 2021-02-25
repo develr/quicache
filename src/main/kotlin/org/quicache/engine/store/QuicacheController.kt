@@ -1,6 +1,6 @@
-package br.eng.r2a.quicache.engine.store
+package org.quicache.engine.store
 
-import br.eng.r2a.quicache.engine.config.QuicacheDefaultConfig
+import org.quicache.engine.config.QuicacheDefaultConfig
 
 internal object QuicacheController {
     /**

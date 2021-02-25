@@ -1,4 +1,4 @@
-package br.eng.r2a.quicache.engine.exception
+package org.quicache.engine.exception
 
 import java.lang.Exception
 

@@ -1,4 +1,4 @@
-package br.eng.r2a.quicache.engine.store
+package org.quicache.engine.store
 
 data class QuicacheObject(
     val key: String,

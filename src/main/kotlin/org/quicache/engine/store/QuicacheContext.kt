@@ -1,4 +1,4 @@
-package br.eng.r2a.quicache.engine.store
+package org.quicache.engine.store
 
 import java.util.*
 import java.util.function.Predicate
@@ -13,15 +13,15 @@ internal object QuicacheContext {
     private val currentContext = mutableListOf<QuicacheObject>()
 
     fun addToContext(quicacheObject: QuicacheObject) {
-        this.currentContext.add(quicacheObject)
+        currentContext.add(quicacheObject)
     }
 
     fun getFromContext(key: String, context: String?): QuicacheObject? {
-        return this.currentContext.firstOrNull { current -> current.key == key && current.schema == context }
+        return currentContext.firstOrNull { current -> current.key == key && current.schema == context }
     }
 
     fun unsafeResetContext() {
-        this.currentContext.removeIf { true }
+        currentContext.removeIf { true }
     }
 
     fun scheduleWithTTL(quicacheObject: QuicacheObject) {

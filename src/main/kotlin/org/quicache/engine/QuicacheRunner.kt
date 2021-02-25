@@ -1,14 +1,12 @@
-package br.eng.r2a.quicache.engine
+package org.quicache.engine
 
-import br.eng.r2a.quicache.engine.actions.GetAction
-import br.eng.r2a.quicache.engine.actions.IAction
-import br.eng.r2a.quicache.engine.actions.Parameters
-import br.eng.r2a.quicache.engine.actions.SetAction
-import br.eng.r2a.quicache.engine.config.QuicacheDefaultConfig
-import br.eng.r2a.quicache.engine.store.QuicacheController
+import org.quicache.engine.actions.GetAction
+import org.quicache.engine.actions.IAction
+import org.quicache.engine.actions.Parameters
+import org.quicache.engine.actions.SetAction
+import org.quicache.engine.config.QuicacheDefaultConfig
 import java.io.OutputStream
-import java.lang.IndexOutOfBoundsException
-import java.lang.reflect.Constructor
+import org.quicache.engine.extension.getIndexOrElse
 import java.net.ServerSocket
 import java.net.Socket
 import java.nio.charset.Charset
@@ -68,13 +66,7 @@ class ClientHandler(client: Socket) {
         }
     }
 
-    fun List<String>.getIndexOrElse(index: Int, elseValue: String?): String? {
-        return try {
-            this[index]
-        } catch (exception: IndexOutOfBoundsException) {
-            elseValue
-        }
-    }
+
 
     private fun write(message: String) {
         writer.write((message).toByteArray(Charset.defaultCharset()))

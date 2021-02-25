@@ -1,6 +1,6 @@
-package br.eng.r2a.quicache.engine.actions
+package org.quicache.engine.actions
 
-import br.eng.r2a.quicache.engine.store.QuicacheController
+import org.quicache.engine.store.QuicacheController
 
 class SetAction(
     private val key: String,

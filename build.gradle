@@ -5,12 +5,18 @@ plugins {
 apply plugin: 'java'
 apply plugin: 'application'
 
-group 'br.eng.r2a.quicache'
+group 'org.quicache'
 version '1.0-SNAPSHOT'
-mainClassName = 'br.eng.r2a.quicache.engine.QuicacheRunner'
+mainClassName = 'org.quicache.engine.QuicacheRunner'
 
 repositories {
     mavenCentral()
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'com.foo.bar.MainClass'
+    }
 }
 
 dependencies {

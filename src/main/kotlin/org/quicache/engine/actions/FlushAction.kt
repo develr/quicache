@@ -1,6 +1,6 @@
-package br.eng.r2a.quicache.engine.actions
+package org.quicache.engine.actions
 
-import br.eng.r2a.quicache.engine.store.QuicacheContext
+import org.quicache.engine.store.QuicacheContext
 
 class FlushAction: IAction {
     override fun run(): ByteArray? {
