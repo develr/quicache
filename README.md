@@ -6,4 +6,4 @@ In memory data store
 
 ## Docs
 
-In progress
+See the [Quicache Wiki](https://github.com/quicache/quicache/wiki).
