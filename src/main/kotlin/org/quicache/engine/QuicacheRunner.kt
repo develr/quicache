@@ -13,23 +13,23 @@ import java.nio.charset.Charset
 import java.util.*
 import kotlin.concurrent.thread
 
+
 object QuicacheRunner {
     fun isTTT(): Boolean {
         return true
     }
+
+    @JvmStatic fun main(args: Array<String>) {
+        val server = ServerSocket(QuicacheDefaultConfig.defaultPort)
+        println("Server running on port ${server.localPort}")
+
+        do {
+            val client = server.accept()
+            println("Client connected: ${client.inetAddress.hostAddress}")
+            thread { ClientHandler(client).run() }
+        } while (isTTT())
+    }
 }
-
-fun main(args: Array<String>) {
-    val server = ServerSocket(QuicacheDefaultConfig.defaultPort)
-    println("Server running on port ${server.localPort}")
-
-    do {
-        val client = server.accept()
-        println("Client connected: ${client.inetAddress.hostAddress}")
-        thread { ClientHandler(client).run() }
-    } while (QuicacheRunner.isTTT())
-}
-
 
 class ClientHandler(client: Socket) {
     private val client: Socket = client

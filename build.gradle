@@ -1,14 +1,25 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:6.1.0'
+    }
+}
+
 plugins {
     id 'org.jetbrains.kotlin.jvm' version '1.4.10'
     id "com.github.johnrengelman.shadow" version "6.1.0"
 }
 
+apply plugin: 'com.github.johnrengelman.shadow'
 apply plugin: 'java'
 apply plugin: 'application'
 
+mainClassName = "org.quicache.engine.QuicacheRunner"
+
 group 'org.quicache'
 version '1.0-SNAPSHOT'
-mainClassName = 'org.quicache.engine.QuicacheRunner'
 
 repositories {
     mavenCentral()
@@ -25,4 +36,3 @@ shadowJar {
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib"
 }
-
