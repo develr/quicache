@@ -10,7 +10,7 @@ branches:
     - main
 
 script:
-  - ./gradlew clean build assemble test jacocoTestReport coverallsJacoco --stacktrace
+  - ./gradlew clean build test jacocoTestReport --stacktrace
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
@@ -20,3 +20,6 @@ cache:
   directories:
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)

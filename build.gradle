@@ -17,7 +17,6 @@ plugins {
     id "jacoco"
     id "org.jetbrains.kotlin.jvm" version "$kotlin_version"
     id "com.github.johnrengelman.shadow" version "6.1.0"
-    id "com.github.nbaztec.coveralls-jacoco" version "1.2.12"
 }
 
 apply plugin: "com.github.johnrengelman.shadow"
@@ -68,10 +67,6 @@ jacocoTestReport {
         csv.enabled     true
         html.enabled    true
     }
-}
-
-coverallsJacoco {
-
 }
 
 test {
