@@ -6,7 +6,7 @@ dist: trusty
 jdk: oraclejdk8
 
 script:
-  - ./gradlew clean build assemble --stacktrace
+  - ./gradlew clean build assemble test jacocoTestReport coverallsJacoco --stacktrace
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock

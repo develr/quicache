@@ -2,6 +2,7 @@ buildscript {
     ext {
         kotest_version = "4.4.3"
         mockk_version = "1.11.0"
+        kotlin_version = "1.4.10"
     }
 
     repositories {
@@ -13,9 +14,10 @@ buildscript {
 }
 
 plugins {
-    id 'jacoco'
-    id "org.jetbrains.kotlin.jvm" version "1.4.10"
+    id "jacoco"
+    id "org.jetbrains.kotlin.jvm" version "$kotlin_version"
     id "com.github.johnrengelman.shadow" version "6.1.0"
+    id "com.github.nbaztec.coveralls-jacoco" version "1.2.12"
 }
 
 apply plugin: "com.github.johnrengelman.shadow"
@@ -41,7 +43,7 @@ shadowJar {
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation "io.kotest:kotest-runner-junit5-jvm:$kotest_version"
     testImplementation "io.kotest:kotest-runner-junit5:$kotest_version"
     testImplementation "io.kotest:kotest-assertions-core:$kotest_version"
