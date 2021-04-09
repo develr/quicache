@@ -62,6 +62,13 @@ tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
     }
 }
 
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        csv.enabled true
+    }
+}
+
 test {
     useJUnitPlatform()
 }
