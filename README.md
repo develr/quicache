@@ -1,6 +1,6 @@
 # quicache
 
-<img src="/images/logo.png?raw=true" width="240">
+[![Coverage Status](https://coveralls.io/repos/github/quicache/quicache/badge.svg?branch=main)](https://coveralls.io/github/quicache/quicache?branch=main)
 
 In memory data store
 
