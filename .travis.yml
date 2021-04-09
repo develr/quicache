@@ -5,6 +5,10 @@ os: linux
 dist: trusty
 jdk: oraclejdk8
 
+branches:
+  only:
+    - main
+
 script:
   - ./gradlew clean build assemble test jacocoTestReport coverallsJacoco --stacktrace
 
